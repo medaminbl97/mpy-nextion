@@ -1,0 +1,15 @@
+module: mymodule
+classes:
+  - name: Math
+    methods:
+      - name: add
+        args: [a,b]
+      - name: mul
+        args: [a,b]
+      - name: div
+  - name: Shape
+    methods:
+      - name: getName
+      - name: setname
+        args: [new_nae]
+      - name: infos

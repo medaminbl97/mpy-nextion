@@ -1,0 +1,53 @@
+module: nextion
+classes:
+  - name: Nextion
+    methods:
+      - name: nexLoop
+      - name: init
+      - name: infos
+      - name: dettachPush
+        args: [nex_object]
+      - name: attachPush
+        args: [nex_object,callback_func]
+      - name: detachPop
+        args: [nex_object]
+      - name: attachPop
+        args: [nex_object,callback_func]
+  - name: Button
+    methods:
+      - name: infos
+      - name: getText
+        args: [len]
+      - name: setText
+        args: [buffer]
+  - name: Text
+    methods:
+      - name: infos
+      - name: getText
+        args: [len]
+      - name: setText
+        args: [buffer]
+  - name: Number
+    methods:
+      - name: infos
+      - name: getValue
+        args: [num]
+      - name: setValue
+        args: [num]
+  - name: Page
+    methods:
+      - name: show
+  - name : Slider
+    methods:
+      - name: getValue
+        args: [number]
+      - name: setValue
+        args: [number]
+  - name : ProgressBar
+    methods:
+      - name: getValue
+        args: [number]
+      - name: setValue
+        args: [number]
+   
+
