@@ -212,9 +212,11 @@ uint8_t nexInit(void)
     //dbSerialBegin(9600);
     nexSerial_init(9600);
     sendCommand("");
+    printf("command  '' sent\n");
     sendCommand("bkcmd=1");
     ret1 = recvRetCommandFinished();
     sendCommand("page 0");
+    printf("page 0 sent\n");
     ret2 = recvRetCommandFinished();
     return ret1 && ret2;
 }

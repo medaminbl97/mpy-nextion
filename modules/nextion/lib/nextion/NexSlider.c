@@ -22,7 +22,7 @@ uint8_t NexSlider_setValue(struct NexObject *slider, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, slider->__name);
     strcat(cmd, ".val=");
     strcat(cmd, buf);
@@ -46,7 +46,7 @@ uint8_t NexSlider_Set_background_color_bco(struct NexObject *slider, uint32_t nu
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, slider->__name);
     strcat(cmd, ".bco=");
     strcat(cmd, buf);
@@ -74,7 +74,7 @@ uint8_t NexSlider_Set_font_color_pco(struct NexObject *slider, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, slider->__name);
     strcat(cmd, ".pco=");
     strcat(cmd, buf);
@@ -102,7 +102,7 @@ uint8_t NexSlider_Set_pointer_thickness_wid(struct NexObject *slider, uint32_t n
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, slider->__name);
     strcat(cmd, ".wid=");
     strcat(cmd, buf);
@@ -130,7 +130,7 @@ uint8_t NexSlider_Set_cursor_height_hig(struct NexObject *slider, uint32_t numbe
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, slider->__name);
     strcat(cmd, ".hig=");
     strcat(cmd, buf);
@@ -158,7 +158,7 @@ uint8_t NexSlider_setMaxval(struct NexObject *slider, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, slider->__name);
     strcat(cmd, ".maxval=");
     strcat(cmd, buf);
@@ -186,7 +186,7 @@ uint8_t NexSlider_setMinval(struct NexObject *slider, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, slider->__name);
     strcat(cmd, ".minval=");
     strcat(cmd, buf);

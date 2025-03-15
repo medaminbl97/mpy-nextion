@@ -1,7 +1,7 @@
 #include "Utilities.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "tinyprintf.h"
 uint8_t TestBit(uint8_t var, int8_t bi)
 {
     if (((var) & (0b00000001 << (bi))))
@@ -14,7 +14,7 @@ uint8_t TestBit(uint8_t var, int8_t bi)
     }
 }
 
-char *nexutoa(char *str, unsigned int value, int radix)
+char *utoac(char *str, unsigned int value, int radix)
 {
     int size;
     const char *format = 0;
@@ -32,7 +32,7 @@ char *nexutoa(char *str, unsigned int value, int radix)
     }
     if (format == 0)
         return str;
-    size = sprintf(str, format, value);
+    size = tfp_sprintf(str, format, value);
     return &str[size];
 }
 

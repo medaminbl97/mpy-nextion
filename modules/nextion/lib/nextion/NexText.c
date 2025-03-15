@@ -43,7 +43,7 @@ uint8_t NexText_Set_background_color_bco(struct NexObject *text, uint32_t number
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, text->__name);
     strcat(cmd, ".bco=");
     strcat(cmd, buf);
@@ -71,7 +71,7 @@ uint8_t NexText_Set_font_color_pco(struct NexObject *text, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, text->__name);
     strcat(cmd, ".pco=");
     strcat(cmd, buf);
@@ -99,7 +99,7 @@ uint8_t NexText_Set_place_xcen(struct NexObject *text, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, text->__name);
     strcat(cmd, ".xcen=");
     strcat(cmd, buf);
@@ -127,7 +127,7 @@ uint8_t NexText_Set_place_ycen(struct NexObject *text, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, text->__name);
     strcat(cmd, ".ycen=");
     strcat(cmd, buf);
@@ -155,7 +155,7 @@ uint8_t NexText_setFont(struct NexObject *text, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, text->__name);
     strcat(cmd, ".font=");
     strcat(cmd, buf);
@@ -183,7 +183,7 @@ uint8_t NexText_Set_background_crop_picc(struct NexObject *text, uint32_t number
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, text->__name);
     strcat(cmd, ".picc=");
     strcat(cmd, buf);
@@ -211,7 +211,7 @@ uint8_t NexText_Set_background_image_pic(struct NexObject *text, uint32_t number
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, text->__name);
     strcat(cmd, ".pic=");
     strcat(cmd, buf);

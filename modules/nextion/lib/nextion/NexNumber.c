@@ -36,7 +36,7 @@ uint8_t NexNumber_setValue(struct NexObject *number, uint32_t num)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".val=");
     strcat(cmd, buf);
@@ -60,7 +60,7 @@ uint8_t NexNumber_Set_background_color_bco(struct NexObject *number, uint32_t nu
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".bco=");
     strcat(cmd, buf);
@@ -88,7 +88,7 @@ uint8_t NexNumber_Set_font_color_pco(struct NexObject *number, uint32_t num)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".pco=");
     strcat(cmd, buf);
@@ -116,7 +116,7 @@ uint8_t NexNumber_Set_place_xcen(struct NexObject *number, uint32_t num)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".xcen=");
     strcat(cmd, buf);
@@ -144,7 +144,7 @@ uint8_t NexNumber_Set_place_ycen(struct NexObject *number, uint32_t num)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".ycen=");
     strcat(cmd, buf);
@@ -172,7 +172,7 @@ uint8_t NexNumber_setFont(struct NexObject *number, uint32_t num)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".font=");
     strcat(cmd, buf);
@@ -200,7 +200,7 @@ uint8_t NexNumber_Set_number_lenth(struct NexObject *number, uint32_t num)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".lenth=");
     strcat(cmd, buf);
@@ -228,7 +228,7 @@ uint8_t NexNumber_Set_background_crop_picc(struct NexObject *number, uint32_t nu
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".picc=");
     strcat(cmd, buf);
@@ -255,7 +255,7 @@ uint8_t NexNumber_Set_background_image_pic(struct NexObject *number, uint32_t nu
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, num, 10);
+    utoac(buf, num, 10);
     strcat(cmd, number->__name);
     strcat(cmd, ".pic=");
     strcat(cmd, buf);

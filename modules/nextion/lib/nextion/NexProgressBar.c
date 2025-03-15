@@ -37,7 +37,7 @@ uint8_t NexProgressBar_setValue(struct NexObject *bar, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, bar->__name);
     strcat(cmd, ".val=");
     strcat(cmd, buf);
@@ -61,7 +61,7 @@ uint8_t NexProgressBar_Set_background_color_bco(struct NexObject *bar, uint32_t 
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, bar->__name);
     strcat(cmd, ".bco=");
     strcat(cmd, buf);
@@ -89,7 +89,7 @@ uint8_t NexProgressBar_Set_font_color_pco(struct NexObject *bar, uint32_t number
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, bar->__name);
     strcat(cmd, ".pco=");
     strcat(cmd, buf);

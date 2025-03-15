@@ -58,7 +58,7 @@ uint8_t NexButton_Set_background_color_bco(struct NexObject *button, uint32_t nu
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".bco=");
     strcat(cmd, buf);
@@ -86,7 +86,7 @@ uint8_t NexButton_Set_press_background_color_bco2(struct NexObject *button, uint
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".bco2=");
     strcat(cmd, buf);
@@ -114,7 +114,7 @@ uint8_t NexButton_Set_font_color_pco(struct NexObject *button, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".pco=");
     strcat(cmd, buf);
@@ -142,7 +142,7 @@ uint8_t NexButton_Set_press_font_color_pco2(struct NexObject *button, uint32_t n
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".pco2=");
     strcat(cmd, buf);
@@ -170,7 +170,7 @@ uint8_t NexButton_Set_place_xcen(struct NexObject *button, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".xcen=");
     strcat(cmd, buf);
@@ -198,7 +198,7 @@ uint8_t NexButton_Set_place_ycen(struct NexObject *button, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".ycen=");
     strcat(cmd, buf);
@@ -226,7 +226,7 @@ uint8_t NexButton_setFont(struct NexObject *button, uint32_t number)
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".font=");
     strcat(cmd, buf);
@@ -254,7 +254,7 @@ uint8_t NexButton_Set_background_crop_picc(struct NexObject *button, uint32_t nu
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".picc=");
     strcat(cmd, buf);
@@ -282,7 +282,7 @@ uint8_t NexButton_Set_press_background_crop_picc2(struct NexObject *button, uint
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".picc2=");
     strcat(cmd, buf);
@@ -310,7 +310,7 @@ uint8_t NexButton_Set_background_image_pic(struct NexObject *button, uint32_t nu
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".pic=");
     strcat(cmd, buf);
@@ -338,7 +338,7 @@ uint8_t NexButton_Set_press_background_image_pic2(struct NexObject *button, uint
     ClearString(buf);
     ClearString(cmd);
 
-    nexutoa(buf, number, 10);
+    utoac(buf, number, 10);
     strcat(cmd, button->__name);
     strcat(cmd, ".pic2=");
     strcat(cmd, buf);

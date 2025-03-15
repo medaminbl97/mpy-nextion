@@ -1,7 +1,7 @@
 all: 
 	cd micropython && make -C mpy-cross
 	cd micropython/ports/stm32 && make BOARD=NUCLEO_H743ZI2 submodules
-	cd micropython/ports/stm32 && make V=1 BOARD=NUCLEO_H743ZI2 USER_C_MODULES=../../../modules
+	cd micropython/ports/stm32 && make BOARD=NUCLEO_H743ZI2 USER_C_MODULES=../../../modules
 
 init:
 	git submodule init
