@@ -49,5 +49,11 @@ classes:
         args: [number]
       - name: setValue
         args: [number]
+  - name : Serial
+    methods:
+      - name: send
+        args: [str_value]
+      - name: rcv
+        args: []
    
 

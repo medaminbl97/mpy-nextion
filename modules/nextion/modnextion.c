@@ -14,6 +14,7 @@ extern const mp_obj_type_t number_type;
 extern const mp_obj_type_t page_type;
 extern const mp_obj_type_t slider_type;
 extern const mp_obj_type_t progressbar_type;
+extern const mp_obj_type_t serial_type;
 
 // Define module and its classes
 static const mp_rom_map_elem_t nextion_module_globals_table[] = {
@@ -24,7 +25,8 @@ static const mp_rom_map_elem_t nextion_module_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR_Number), MP_ROM_PTR(&number_type)},
     {MP_ROM_QSTR(MP_QSTR_Page), MP_ROM_PTR(&page_type)},
     {MP_ROM_QSTR(MP_QSTR_Slider), MP_ROM_PTR(&slider_type)},
-    {MP_ROM_QSTR(MP_QSTR_ProgressBar), MP_ROM_PTR(&progressbar_type)}
+    {MP_ROM_QSTR(MP_QSTR_ProgressBar), MP_ROM_PTR(&progressbar_type)},
+    {MP_ROM_QSTR(MP_QSTR_Serial), MP_ROM_PTR(&serial_type)},
 };
 static MP_DEFINE_CONST_DICT(nextion_module_globals, nextion_module_globals_table);
 
