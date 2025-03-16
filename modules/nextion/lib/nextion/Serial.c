@@ -1,62 +1,115 @@
 #include "Serial.h"
 #include "Utilities.h"
-#include "stm32h7xx_hal.h"
+#include "usart.h"
+
+// PC10     ------> UART4_TX
+// PC11     ------> UART4_RX
+
+unsigned char rxBuff[64];
+char rxHead, rxTail;
+/**
+  * @brief  Rx Transfer completed callback
+  * @param  UartHandle: UART handle
+  * @retval None
+  */
+ volatile uint32_t RxCounter = 0 ;
+ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
+ {
+     if(UartHandle == &huart4)
+     {
+        RxCounter++;
+         rxBuff[rxHead++] = (unsigned char)(huart4.Instance->RDR & 0xFF); // read the received data
+         if (rxHead == sizeof(rxBuff))
+         {
+             rxHead = 0;
+         }
+     }
+     HAL_UART_Receive_IT(&huart4, (uint8_t *)rxBuff, 1); // start the interrupt
+ }
 
 
-UART_HandleTypeDef huart; // UART1 Handle
-
-// Initialize UART with specified baud rate
-void Serial_Init(long baudrate) {
-    huart.Instance = UART5;
-    huart.Init.BaudRate = baudrate;
-    huart.Init.WordLength = UART_WORDLENGTH_8B;
-    huart.Init.StopBits = UART_STOPBITS_1;
-    huart.Init.Parity = UART_PARITY_NONE;
-    huart.Init.Mode = UART_MODE_TX_RX;
-    huart.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-    huart.Init.OverSampling = UART_OVERSAMPLING_16;
-
-    if (HAL_UART_Init(&huart) != HAL_OK) {
-        // Initialization Error
-        printf("error while init");
-    }
+void Serial_Init(long baudrate)
+{
+	baudrate = baudrate;
+    MX_GPIO_Init();
+	MX_UART4_Init();
+    HAL_NVIC_SetPriority(UART4_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(UART4_IRQn);
+    HAL_UART_Receive_IT(&huart4, (uint8_t *)rxBuff, 1); // start the interrupt
 }
 
-// Write a single byte over UART
-unsigned char Serial_Write(unsigned char c) {
-    if (HAL_UART_Transmit(&huart, &c, 1, HAL_MAX_DELAY) == HAL_OK) {
-        return 1; // Success
-    }
-    return 0; // Error
+unsigned char Serial_Write(unsigned char c)
+{
+	HAL_StatusTypeDef retval;
+	retval =HAL_UART_Transmit(&huart4, &c, 1 , HAL_MAX_DELAY);
+
+	if( HAL_OK == retval)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
-// Read a single byte from UART
-unsigned char Serial_Read() {
+unsigned char Serial_Read()
+{
     unsigned char c;
-    if (HAL_UART_Receive(&huart, &c, 1, HAL_MAX_DELAY) == HAL_OK) {
-        return c;
+    if (rxTail < rxHead)
+    {
+        c = rxBuff[rxTail++];
+        if (rxTail == rxHead)
+        {
+            rxHead = 0;
+            rxTail = 0;
+        }
     }
-    return 0; // Error or no data
+    else
+    {
+        rxHead = 0;
+        rxTail = 0;
+        c = -1;
+    }
+    return c;
 }
 
-// Check if data is available to read
-unsigned char Serial_Available() {
-    return __HAL_UART_GET_FLAG(&huart, UART_FLAG_RXNE) ? 1 : 0;
+unsigned char Serial_Available()
+{
+    return rxHead - rxTail;
 }
 
-// Read multiple bytes from UART
-unsigned char Serial_ReadBytes(char *buf, unsigned char len) {
-    if (HAL_UART_Receive(&huart, (uint8_t *)buf, len, HAL_MAX_DELAY) == HAL_OK) {
-        return len;
+unsigned char Serial_ReadBytes(char *buf, unsigned char len)
+{
+    unsigned char cnt = 0;
+    if (len < rxHead - rxTail)
+    {
+        ArrayCopy(buf, &rxBuff[rxTail], len);
+        rxTail += len;
+        cnt = len;
     }
-    return 0; // Error
+    else if (len == rxHead - rxTail)
+    {
+        ArrayCopy(buf, &rxBuff[rxTail], len);
+        rxTail = 0;
+        rxHead = 0;
+        cnt = len;
+    }
+    else
+    {
+        ArrayCopy(buf, &rxBuff[rxTail], rxHead - rxTail);
+        cnt = rxHead - rxTail;
+        rxTail = 0;
+        rxHead = 0;
+    }
+    return cnt;
 }
 
-// Print a string over UART
-void Serial_Print(unsigned char *txt) {
-    while (*txt) {
-        Serial_Write(*txt++);
-    }
+void Serial_Print(unsigned char *txt)
+{
+    HAL_StatusTypeDef retval;
+    short i = strlen((char *)txt);
+    retval = HAL_UART_Transmit(&huart4, txt, i, HAL_MAX_DELAY);
 }
 
 void delay_ms(uint32_t ms) {

@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "serial.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "usart.h": "c",
+        "gpio.h": "c"
     }
 }

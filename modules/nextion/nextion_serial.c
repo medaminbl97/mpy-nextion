@@ -12,29 +12,30 @@ typedef struct _nextion_serial_obj_t {
 
 mp_obj_t nextion_Serial_make_new(const mp_obj_type_t *type, size_t n_args, size_t n_kw, const mp_obj_t *args) {
     serial_obj_t *self = mp_obj_malloc(serial_obj_t, type);
-    mp_printf(&mp_plat_print, "Constructor of Serial called\n");
-    if (self == NULL) {
-        mp_raise_msg(&mp_type_MemoryError, "Failed to allocate Serial object");
-    }
+    Serial_Init(9600);
+    mp_printf(&mp_plat_print, "Uart 4 Initialized !\n");
     return MP_OBJ_FROM_PTR(self);
 }
 
-
+// Method to send data over UART
 static mp_obj_t nextion_Serial_send(mp_obj_t self_in, mp_obj_t str_value) {
     serial_obj_t *self = MP_OBJ_TO_PTR(self_in);
-    // TODO: Implement send method logic here
-    mp_printf(&mp_plat_print, "Called send method\n");
+    const char *str_to_send = mp_obj_str_get_str(str_value);
+    for (const char *c = str_to_send; *c != '\0'; c++) {
+        mp_printf(&mp_plat_print, "Sending char : %c \n", *c);
+        Serial_Write(*c);
+    }
+    mp_printf(&mp_plat_print, "Following String sent : %s \n", str_to_send);
     return mp_const_none;
 }
 
-
+// Method to receive data from UART
 static mp_obj_t nextion_Serial_rcv(mp_obj_t self_in) {
     serial_obj_t *self = MP_OBJ_TO_PTR(self_in);
-    // TODO: Implement rcv method logic here
-    mp_printf(&mp_plat_print, "Called rcv method\n");
-    return mp_const_none;
+    unsigned char c = Serial_Read();
+    mp_printf(&mp_plat_print, "Received Value : %c \n", c);
+    return mp_obj_new_str_via_qstr(&c, 1);
 }
-
 /*
 ################################################################################
                 End nextion Serial Implementation

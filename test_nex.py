@@ -1,3 +1,5 @@
-from nextion import Serial
+from nextion import Nextion, Button
 
-ser = Serial();
+btn = Button(0,2,"b1")
+nex = Nextion()
+nex.init()
