@@ -4,5 +4,6 @@
         "stdint.h": "c",
         "usart.h": "c",
         "gpio.h": "c"
-    }
+    },
+    "cortex-debug.variableUseNaturalFormat": true
 }

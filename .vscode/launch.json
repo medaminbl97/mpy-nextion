@@ -1,0 +1,39 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "STlink launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/micropython/ports/stm32/build-NUCLEO_H743ZI2/firmware.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "NUCLEO_H743ZI2",
+            "interface": "swd",
+            "runToEntryPoint": "main", // else it starts at reset handler - not interested
+            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
+            "svdFile": "", // Include svd to watch device peripherals
+            "swoConfig": {}, // currently (v1.7.0) not supported
+            "serverArgs": ["--connect-under-reset"]
+        },
+        {
+            "name": "STlink attach",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/micropython/ports/stm32/build-NUCLEO_H743ZI2/firmware.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "NUCLEO_H743ZI2",
+            "interface": "swd",
+            "runToEntryPoint": "main", // else it starts at reset handler - not interested
+            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
+            "svdFile": "", // Include svd to watch device peripherals
+            "swoConfig": {}, // currently (v1.7.0) not supported
+            "serverArgs": ["--connect-under-reset"]
+        },
+    ]
+}
