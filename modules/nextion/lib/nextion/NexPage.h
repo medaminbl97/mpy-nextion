@@ -2,7 +2,7 @@
 #define __NEXPAGE_H__
 #include "NexTouch.h"
 #include "NexHardware.h"
-#include "Utilities.h"
+#include "utils/Utilities.h"
 
 uint8_t NexPage_show(struct NexObject *);
 

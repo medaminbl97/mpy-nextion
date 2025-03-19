@@ -1,6 +1,6 @@
 #ifndef __NEXSLIDER_H__
 #define __NEXSLIDER_H__
-#include "Utilities.h"
+#include "utils/Utilities.h"
 #include "NexTouch.h"
 #include "NexHardware.h"
 

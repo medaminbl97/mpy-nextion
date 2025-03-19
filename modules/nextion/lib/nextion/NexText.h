@@ -2,7 +2,7 @@
 #define __NEXTEXT_H__
 #include "NexTouch.h"
 #include "NexHardware.h"
-#include "Utilities.h"
+#include "utils/Utilities.h"
 /**
      * Get text attribute of component.
      *

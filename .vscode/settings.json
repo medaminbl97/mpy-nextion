@@ -5,7 +5,9 @@
         "usart.h": "c",
         "gpio.h": "c",
         "stdlib.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "ringbuffer.h": "c",
+        "utilities.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": true
 }

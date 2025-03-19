@@ -2,7 +2,7 @@
 #ifndef __NEXOBJECT_H__
 #define __NEXOBJECT_H__
 #include "NexConfig.h"
-#include "Utilities.h"
+#include "utils/Utilities.h"
 
 typedef void (*NexTouchEventCb)(void *ptr);
 

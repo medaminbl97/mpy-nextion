@@ -13,7 +13,7 @@
  * the License, or (at your option) any later version.
  */
 #include "NexHardware.h"
-#include "Utilities.h"
+#include "utils/Utilities.h"
 
 #define NEX_RET_CMD_FINISHED (0x01)
 #define NEX_RET_EVENT_LAUNCHED (0x88)

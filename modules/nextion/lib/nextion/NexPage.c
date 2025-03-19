@@ -1,6 +1,6 @@
 #include "NexPage.h"
 #include <string.h>
-#include "Utilities.h"
+#include "utils/Utilities.h"
 
 uint8_t buffer[4];
 extern char cmd[64];

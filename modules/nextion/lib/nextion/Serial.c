@@ -1,12 +1,8 @@
 #include "Serial.h"
-#include "Utilities.h"
-#include "utils/usart.h"
-#include "ringbuffer.h"
-
-#define COMMANDE_MAX_RXCOMCHANNEL             (1U)
+#include "utils/Utilities.h"
 
 
-unsigned char rxBuff[64];
+unsigned char rxBuff[1];
 #if 0
 char rxHead, rxTail;
 #endif
@@ -36,8 +32,9 @@ void UART4_IRQHandler(void)
  void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
  {
      if(UartHandle == &huart4)
-     {
-    	 ring_buffer_queue(&RxRingBuff[0],((unsigned char)(huart4.Instance->RDR & 0xFF))); /*Add Received Data To buffer*/
+     {      
+        printf("Got a char : %c!\n",rxBuff[0]);
+    	 ring_buffer_queue(&RxRingBuff[0],rxBuff[0]); /*Add Received Data To buffer*/
         // printf("got a char !\n");
 #if 0
          RxCounter++;

@@ -2,7 +2,7 @@
 #define __NEXPROGRESSBAR_H__
 #include "NexTouch.h"
 #include "NexHardware.h"
-#include "Utilities.h"
+#include "utils/Utilities.h"
 
 /**
      * Get the value of progress bar. 

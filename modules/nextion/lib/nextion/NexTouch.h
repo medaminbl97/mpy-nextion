@@ -5,7 +5,7 @@
 #include "NexConfig.h"
 #include "NexObject.h"
 #include <string.h>
-#include "Utilities.h"
+#include "utils/Utilities.h"
 
 #define NEX_EVENT_PUSH (0x01)
 #define NEX_EVENT_POP (0x00)

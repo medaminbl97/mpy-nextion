@@ -3,7 +3,7 @@
 #include "NexConfig.h"
 #include "NexTouch.h"
 #include "NexObject.h"
-#include "Utilities.h"
+#include "utils/Utilities.h"
 /**
  * Init Nextion.  
  * 

@@ -34,7 +34,7 @@ static mp_obj_t nextion_Serial_send(mp_obj_t self_in, mp_obj_t str_value) {
 static mp_obj_t nextion_Serial_rcv(mp_obj_t self_in) {
     serial_obj_t *self = MP_OBJ_TO_PTR(self_in);
     unsigned char c = Serial_Read();
-    mp_printf(&mp_plat_print, "Received Value : %s \n", c);
+    mp_printf(&mp_plat_print, "Received Value : %c \n", c);
     return mp_obj_new_str_via_qstr(&c, 1);
 }
 
@@ -67,14 +67,8 @@ static mp_obj_t nextion_Serial_read(mp_obj_t self_in, mp_obj_t len_in) {
 static mp_obj_t nextion_Serial_read_ring_buffer(mp_obj_t self_in) {
     serial_obj_t *self = MP_OBJ_TO_PTR(self_in);
     
-    mp_printf(&mp_plat_print, "Ring Buffer Values: ");
+    mp_printf(&mp_plat_print, "Ring Buffer Values: %s \n",RxRingBuff);
     
-    for (size_t i = 0; i < sizeof(rxBuff); i++) {
-        mp_printf(&mp_plat_print, "%02X ", rxBuff[i]);
-    }
-    
-    mp_printf(&mp_plat_print, "\n");
-
     return mp_const_none;
 }
 

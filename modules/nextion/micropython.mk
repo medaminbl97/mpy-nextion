@@ -3,6 +3,7 @@ NEXTION_MOD_DIR := $(USERMOD_DIR)
 # Add all C files to SRC_USERMOD.
 SRC_USERMOD += $(wildcard $(NEXTION_MOD_DIR)/*.c)
 SRC_USERMOD += $(wildcard $(NEXTION_MOD_DIR)/lib/nextion/*.c)
+SRC_USERMOD += $(wildcard $(NEXTION_MOD_DIR)/lib/nextion/utils/*.c)
 
 
 # We can add our module folder to include paths if needed
