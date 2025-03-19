@@ -1,6 +1,6 @@
 #include "Serial.h"
 #include "Utilities.h"
-#include "usart.h"
+#include "utils/usart.h"
 #include "ringbuffer.h"
 
 #define COMMANDE_MAX_RXCOMCHANNEL             (1U)
@@ -22,11 +22,23 @@ ring_buffer_t RxRingBuff[COMMANDE_MAX_RXCOMCHANNEL];
  volatile uint32_t RxCounter = 0 ;
 #endif
 
+void UART4_IRQHandler(void)
+{
+  /* USER CODE BEGIN UART4_IRQn 0 */
+
+  /* USER CODE END UART4_IRQn 0 */
+  HAL_UART_IRQHandler(&huart4);
+  /* USER CODE BEGIN UART4_IRQn 1 */
+
+  /* USER CODE END UART4_IRQn 1 */
+}
+
  void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
  {
      if(UartHandle == &huart4)
      {
     	 ring_buffer_queue(&RxRingBuff[0],((unsigned char)(huart4.Instance->RDR & 0xFF))); /*Add Received Data To buffer*/
+        // printf("got a char !\n");
 #if 0
          RxCounter++;
          rxBuff[rxHead++] = (unsigned char)(huart4.Instance->RDR & 0xFF); // read the received data
@@ -47,7 +59,7 @@ void Serial_Init(long baudrate)
 	MX_UART4_Init();
     // HAL_NVIC_SetPriority(UART4_IRQn, 0, 0);
     // HAL_NVIC_EnableIRQ(UART4_IRQn);
-    // HAL_UART_Receive_IT(&huart4, (uint8_t *)rxBuff, 1); // start the interrupt
+    HAL_UART_Receive_IT(&huart4, (uint8_t *)rxBuff, 1); // start the interrupt
 }
 
 unsigned char Serial_Write(unsigned char c)

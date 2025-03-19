@@ -3,7 +3,9 @@
         "serial.h": "c",
         "stdint.h": "c",
         "usart.h": "c",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": true
 }

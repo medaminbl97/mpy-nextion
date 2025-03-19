@@ -9,6 +9,7 @@
 #define TX_BUFFER_SIZE 64
 #define RX_Flush() _rx_buffer_head=0;_rx_buffer_tail=0
 #define TX_Flush() _tx_buffer_head=0;_tx_buffer_tail=0
+extern unsigned char rxBuff[64];
 /*************************************************************************
 * FUNCTIONS
 *************************************************************************/

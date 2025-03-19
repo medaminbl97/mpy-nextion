@@ -10,7 +10,7 @@ typedef struct _nextion_page_obj_t {
     mp_obj_base_t base;
     mp_obj_t pop_callback_obj;
     mp_obj_t push_callback_obj;
-    struct NexObject page_name;
+    struct NexObject page;
 
 } page_obj_t;
 
@@ -20,6 +20,7 @@ mp_obj_t nextion_Page_make_new(const mp_obj_type_t *type, size_t n_args, size_t 
     if (self == NULL) {
         mp_raise_msg(&mp_type_MemoryError, "Failed to allocate Page object");
     }
+    CreateNexObject(self->page,0,0,mp_obj_str_get_str(args[0]));
     return MP_OBJ_FROM_PTR(self);
 }
 
@@ -29,11 +30,11 @@ static mp_obj_t nextion_Page_show(mp_obj_t self_in) {
     page_obj_t *self = MP_OBJ_TO_PTR(self_in);
 
     // Zeigt die Seite auf dem Nextion-Display an
-    if (NexPage_show(&self->page_name)) {
-        mp_printf(&mp_plat_print, "Seite '%s' erfolgreich angezeigt\n", self->page_name);
+    if (NexPage_show(&self->page)) {
+        mp_printf(&mp_plat_print, "Seite '%s' erfolgreich angezeigt\n", self->page.__name);
         return mp_const_true; // Gibt True bei Erfolg zurück
     } else {
-        mp_printf(&mp_plat_print, "Fehler: Konnte die Seite '%s' nicht anzeigen\n", self->page_name);
+        mp_printf(&mp_plat_print, "Fehler: Konnte die Seite '%s' nicht anzeigen\n", self->page.__name);
         return mp_const_false; // Gibt False bei Fehler zurück
     }
 }

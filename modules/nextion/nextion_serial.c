@@ -1,4 +1,5 @@
 #include "modnextion.h"
+
 /*
 // Auto-generated MicroPython class for Serial
 
@@ -42,33 +43,39 @@ static mp_obj_t nextion_Serial_read(mp_obj_t self_in, mp_obj_t len_in) {
 
     // Get the length of bytes to read
     unsigned char len = mp_obj_get_int(len_in);
-    printf("Requested to read %d bytes\n", len); // Debug print
-
     // Allocate a buffer to store the received bytes
     char *buf = m_new(char, len + 1); // +1 for null terminator
-    printf("Buffer allocated\n"); // Debug print
 
     // Call Serial_ReadBytes to read the data
     unsigned char bytes_read = Serial_ReadBytes(buf, len);
-    printf("Read %d bytes from UART\n", bytes_read); // Debug print
 
     // Null-terminate the buffer to make it a valid C string
     buf[bytes_read] = '\0';
-    printf("Buffer null-terminated\n"); // Debug print
 
     // Print the received data for inspection
-    printf("Received data: %s\n", buf); // Debug print
 
     // Create a Python string object from the buffer
     mp_obj_t str_obj = mp_obj_new_str(buf, bytes_read);
-    printf("Python string object created\n"); // Debug print
 
     // Free the buffer
     m_del(char, buf, len + 1);
-    printf("Buffer freed\n"); // Debug print
 
     // Return the string object
     return str_obj;
+}
+
+static mp_obj_t nextion_Serial_read_ring_buffer(mp_obj_t self_in) {
+    serial_obj_t *self = MP_OBJ_TO_PTR(self_in);
+    
+    mp_printf(&mp_plat_print, "Ring Buffer Values: ");
+    
+    for (size_t i = 0; i < sizeof(rxBuff); i++) {
+        mp_printf(&mp_plat_print, "%02X ", rxBuff[i]);
+    }
+    
+    mp_printf(&mp_plat_print, "\n");
+
+    return mp_const_none;
 }
 
 /*
@@ -85,6 +92,7 @@ static mp_obj_t nextion_Serial_read(mp_obj_t self_in, mp_obj_t len_in) {
 static MP_DEFINE_CONST_FUN_OBJ_2(nextion_Serial_send_obj, nextion_Serial_send);
 static MP_DEFINE_CONST_FUN_OBJ_1(nextion_Serial_rcv_obj, nextion_Serial_rcv);
 static MP_DEFINE_CONST_FUN_OBJ_2(nextion_Serial_read_obj, nextion_Serial_read);
+static MP_DEFINE_CONST_FUN_OBJ_1(nextion_Serial_read_ring_buffer_obj, nextion_Serial_read_ring_buffer);
 
 /*
 ################################################################################
@@ -101,7 +109,8 @@ static MP_DEFINE_CONST_FUN_OBJ_2(nextion_Serial_read_obj, nextion_Serial_read);
 static const mp_rom_map_elem_t serial_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_send), MP_ROM_PTR(&nextion_Serial_send_obj) },
     { MP_ROM_QSTR(MP_QSTR_rcv), MP_ROM_PTR(&nextion_Serial_rcv_obj) },
-    { MP_ROM_QSTR(MP_QSTR_read), MP_ROM_PTR(&nextion_Serial_read_obj) }
+    { MP_ROM_QSTR(MP_QSTR_read), MP_ROM_PTR(&nextion_Serial_read_obj) },
+    { MP_ROM_QSTR(MP_QSTR_read_ring_buffer), MP_ROM_PTR(&nextion_Serial_read_ring_buffer_obj) }
 };
 static MP_DEFINE_CONST_DICT(serial_locals_dict, serial_locals_dict_table);
 
