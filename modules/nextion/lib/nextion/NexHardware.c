@@ -228,12 +228,10 @@ void nexLoop(struct NexObject *nex_listen_list[])
     uint16_t i;
     uint8_t limit = 20;
     uint8_t c;
-
     while (nexSerial_available() > 0)
     {
         nexDelay(10);
         c = nexSerial_read();
-
         if (NEX_RET_EVENT_TOUCH_HEAD == c)
         {
             if (nexSerial_available() >= 6)
@@ -252,4 +250,5 @@ void nexLoop(struct NexObject *nex_listen_list[])
             }
         }
     }
+
 }

@@ -7,7 +7,8 @@
         "stdlib.h": "c",
         "string.h": "c",
         "ringbuffer.h": "c",
-        "utilities.h": "c"
+        "utilities.h": "c",
+        "modnextion.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": true
 }
